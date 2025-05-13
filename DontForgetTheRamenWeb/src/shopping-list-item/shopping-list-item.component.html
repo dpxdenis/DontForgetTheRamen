@@ -1,5 +1,5 @@
 <mat-card appearance="outlined" class="card">
-  <mat-checkbox class="card-checkbox" [checked]="model.checked"></mat-checkbox>
+  <mat-checkbox class="card-checkbox" [checked]="model.checked" (change)="checkedChange($event.checked)"></mat-checkbox>
   <div class="card-content">
     <h2 class="card-header">
       @if(model.quantity > 1) {

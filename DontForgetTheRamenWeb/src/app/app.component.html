@@ -1,6 +1,35 @@
-<h1>Hello world! :)</h1>
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <img src="img.png" class="logo">
+  <span>DontForgetTheRamen</span>
+</mat-toolbar>
 
-@for (item of data; track item.itemId) {
-  <app-shopping-list-item [model]="item"></app-shopping-list-item>
-}
-<router-outlet />
+
+<mat-expansion-panel [expanded]="true" class="section">
+  <mat-expansion-panel-header>
+    <mat-panel-title>Open</mat-panel-title>
+    <mat-panel-description>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  @for (item of data; track item.itemId) {
+    @if (!item.checked) {
+      <app-shopping-list-item [model]="item"></app-shopping-list-item>
+    }
+  }
+</mat-expansion-panel>
+
+<mat-expansion-panel [expanded]="true" class="section">
+  <mat-expansion-panel-header>
+    <mat-panel-title>Done</mat-panel-title>
+    <mat-panel-description>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  @for (item of data; track item.itemId) {
+    @if (item.checked) {
+      <app-shopping-list-item [model]="item"></app-shopping-list-item>
+    }
+  }
+</mat-expansion-panel>
+<router-outlet/>
