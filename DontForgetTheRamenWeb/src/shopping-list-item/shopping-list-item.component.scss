@@ -4,6 +4,7 @@
   margin-bottom: 0.5em;
   margin-left: 1em;
   margin-right: 1em;
+  animation: fadeIn 0.75s ease-in-out forwards;
 }
 
 .card-checkbox {
@@ -36,4 +37,9 @@
 .card-additional-box-text {
   margin-top: 0.2em;
   margin-bottom: 0.3em;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
