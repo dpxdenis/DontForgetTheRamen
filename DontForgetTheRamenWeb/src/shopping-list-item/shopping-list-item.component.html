@@ -1,16 +1,35 @@
 <mat-card appearance="outlined" class="card">
-  <mat-checkbox class="card-checkbox"></mat-checkbox>
+  <mat-checkbox class="card-checkbox" [checked]="model.checked"></mat-checkbox>
   <div class="card-content">
-    <h2 class="card-header">2x Milk</h2>
-    <p class="card-description">sample description</p>
+    <h2 class="card-header">
+      @if(model.quantity > 1) {
+        {{model.quantity}}x
+      }
+      {{model.articleName}}
+    </h2>
+    <p class="card-description">{{model.description}}</p>
     <div class="card-additional-box-container">
       <div class="card-additional-box">
         <mat-icon aria-hidden="false" aria-label="price" fontIcon="attach_money"></mat-icon>
-        <p class="card-additional-box-text">12.00</p>
+        <p class="card-additional-box-text">
+          @if(model.price > 0 ) {
+            {{model.price}}
+          }
+          @else {
+            -
+          }
+        </p>
       </div>
       <div class="card-additional-box">
         <mat-icon aria-hidden="false" aria-label="price" fontIcon="shopping_cart"></mat-icon>
-        <p class="card-additional-box-text">LocalStore</p>
+        <p class="card-additional-box-text">
+          @if(model.placeToBuy != "") {
+            {{model.placeToBuy}}
+          }
+          @else {
+            -
+          }
+        </p>
       </div>
     </div>
   </div>

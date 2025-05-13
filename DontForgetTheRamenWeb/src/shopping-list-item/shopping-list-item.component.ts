@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
+import {ShoppingListItem} from '../app/services/shopping-list.service';
 
 @Component({
   selector: 'app-shopping-list-item',
@@ -10,5 +11,5 @@ import {MatIconModule} from '@angular/material/icon';
   styleUrl: './shopping-list-item.component.scss'
 })
 export class ShoppingListItemComponent {
-
+  @Input() model: ShoppingListItem = new ShoppingListItem(-1, "Sample Item", 10, "This is a description", 999.99, "nowhere", false);
 }
