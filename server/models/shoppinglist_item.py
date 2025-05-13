@@ -1,7 +1,9 @@
 class ShoppingListItem:
-    def __init__(self, item_id:int, article_name:str, description:str = "", price:float = 0, place_to_buy:str = "", checked:bool = False):
+    def __init__(self, item_id:int, article_name:str, quantity:int = 1, description:str = "",
+                 price:float = 0, place_to_buy:str = "", checked:bool = False):
         self.item_id = item_id
         self.article_name = article_name
+        self.quantity = quantity
         self.description = description
         self.price = price
         self.place_to_buy = place_to_buy
