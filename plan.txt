@@ -1,0 +1,10 @@
+UI:
+- Sort by Store and color them by store -> Tree control?
+- if username not set, first set username
+- add dialog
+- remove item/s button
+- admin control panel
+
+
+Backend:
+- Implement websocket -> login by username

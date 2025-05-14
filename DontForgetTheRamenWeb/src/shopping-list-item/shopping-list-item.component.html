@@ -1,21 +1,20 @@
 <mat-card appearance="outlined" class="card">
-  <mat-checkbox class="card-checkbox" [checked]="model.checked" (change)="checkedChange($event.checked)"></mat-checkbox>
+  <mat-checkbox (change)="checkedChange($event.checked)" [checked]="model.checked" class="card-checkbox"></mat-checkbox>
   <div class="card-content">
     <h2 class="card-header">
-      @if(model.quantity > 1) {
-        {{model.quantity}}x
+      @if (model.quantity > 1) {
+        {{ model.quantity }}x
       }
-      {{model.articleName}}
+      {{ model.articleName }}
     </h2>
-    <p class="card-description">{{model.description}}</p>
+    <p class="card-description">{{ model.description }}</p>
     <div class="card-additional-box-container">
       <div class="card-additional-box">
         <mat-icon aria-hidden="false" aria-label="price" fontIcon="attach_money"></mat-icon>
         <p class="card-additional-box-text">
-          @if(model.price > 0 ) {
-            {{model.price}}
-          }
-          @else {
+          @if (model.price > 0) {
+            {{ model.price }}
+          } @else {
             -
           }
         </p>
@@ -23,12 +22,17 @@
       <div class="card-additional-box">
         <mat-icon aria-hidden="false" aria-label="price" fontIcon="shopping_cart"></mat-icon>
         <p class="card-additional-box-text">
-          @if(model.placeToBuy != "") {
-            {{model.placeToBuy}}
-          }
-          @else {
+          @if (model.placeToBuy != "") {
+            {{ model.placeToBuy }}
+          } @else {
             -
           }
+        </p>
+      </div>
+      <div class="card-additional-box">
+        <mat-icon aria-hidden="false" aria-label="price" fontIcon="person"></mat-icon>
+        <p class="card-additional-box-text">
+          {{model.createdBy}}
         </p>
       </div>
     </div>

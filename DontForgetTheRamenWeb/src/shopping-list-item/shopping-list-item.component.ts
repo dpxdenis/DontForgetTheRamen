@@ -11,7 +11,7 @@ import {ShoppingListItem} from '../app/services/shopping-list.service';
   styleUrl: './shopping-list-item.component.scss'
 })
 export class ShoppingListItemComponent {
-  @Input() model: ShoppingListItem = new ShoppingListItem(-1, "Sample Item", 10, "This is a description", 999.99, "nowhere", false);
+  @Input() model: ShoppingListItem = new ShoppingListItem(-1, "Sample Item", "admin", 10, "This is a description", 999.99, "nowhere", false);
 
   checkedChange(state: boolean) {
     this.model.checked = state;
