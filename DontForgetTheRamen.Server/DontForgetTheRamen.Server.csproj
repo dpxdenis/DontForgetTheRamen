@@ -20,6 +20,7 @@
     <ProjectReference Include="..\dontforgettheramen.client\dontforgettheramen.client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+    <ProjectReference Include="..\DontForgetTheRamen.Infrastructure\DontForgetTheRamen.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

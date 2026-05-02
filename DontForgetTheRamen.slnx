@@ -3,5 +3,7 @@
     <Build />
     <Deploy />
   </Project>
+  <Project Path="DontForgetTheRamen.Domain/DontForgetTheRamen.Domain.csproj" Id="425b1454-8403-4b00-b88e-e4b5b150ed20" />
+  <Project Path="DontForgetTheRamen.Infrastructure/DontForgetTheRamen.Infrastructure.csproj" Id="6e977204-7c4f-43c0-aa0f-a4a1284f0a0c" />
   <Project Path="DontForgetTheRamen.Server/DontForgetTheRamen.Server.csproj" />
 </Solution>
