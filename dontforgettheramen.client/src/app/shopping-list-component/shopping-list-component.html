@@ -3,7 +3,12 @@
     <p-accordion-panel value="0">
       <p-accordion-header>Open</p-accordion-header>
       <p-accordion-content>
+        @if(stateService.items().length > 0) {
         <app-shopping-list-item *ngFor="let item of openItems" [item]="item" />
+        }
+        @else {
+        <app-shopping-list-item [skelleton]="true" />
+        }
       </p-accordion-content>
     </p-accordion-panel>
   </p-accordion>
@@ -12,7 +17,12 @@
     <p-accordion-panel value="1">
       <p-accordion-header>Closed</p-accordion-header>
       <p-accordion-content>
+        @if(stateService.items().length > 0) {
         <app-shopping-list-item *ngFor="let item of closedItems" [item]="item" />
+        }
+        @else {
+        <app-shopping-list-item [skelleton]="true" />
+        }
       </p-accordion-content>
     </p-accordion-panel>
   </p-accordion>
