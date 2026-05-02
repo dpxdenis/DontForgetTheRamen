@@ -1,0 +1,6 @@
+@DontForgetTheRamen.Server_HostAddress = http://localhost:5144
+
+GET {{DontForgetTheRamen.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

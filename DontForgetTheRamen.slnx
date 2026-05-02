@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="dontforgettheramen.client/dontforgettheramen.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="DontForgetTheRamen.Server/DontForgetTheRamen.Server.csproj" />
+</Solution>
