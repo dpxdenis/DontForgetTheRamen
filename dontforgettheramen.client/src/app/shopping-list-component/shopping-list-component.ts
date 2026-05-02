@@ -1,6 +1,7 @@
 import { Component, ViewContainerRef, ViewChild, ComponentRef, OnInit } from '@angular/core';
 import { ShoppingListItemComponent } from '../shopping-list-item-component/shopping-list-item-component';
 import { ShoppingListItem, StateService } from '../services/state-service';
+import { ShoppingListItemAddDialogComponent } from '../shopping-list-item-add-dialog-component/shopping-list-item-add-dialog-component';
 
 @Component({
   selector: 'app-shopping-list',
@@ -11,7 +12,7 @@ import { ShoppingListItem, StateService } from '../services/state-service';
 export class ShoppingListComponent implements OnInit {
 
   //items: ShoppingListItem[] = [];
-
+  @ViewChild('dialog') dialog!: ShoppingListItemAddDialogComponent;
   constructor(public stateService: StateService) {
 
   }
@@ -32,5 +33,9 @@ export class ShoppingListComponent implements OnInit {
 
   get closedItems() {
     return this.stateService.items().filter(i => i.checked);
+  }
+
+  showAddDialog() {
+    this.dialog.showDialog();
   }
 }

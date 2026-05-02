@@ -1,4 +1,7 @@
-<p-scrollpanel [style]="{ width: '100%', height: '90vh' }">
+<p-button icon="pi pi-plus" label="Add" [rounded]="true" [outlined]="true" styleClass="w-full mb-3" (click)="showAddDialog()" />
+<app-shopping-list-item-add-dialog-component #dialog/>
+
+<p-scrollpanel [style]="{ width: '100%', height: '85vh' }">
   <p-accordion value="0" styleClass="transparent-accordion">
     <p-accordion-panel value="0">
       <p-accordion-header>Open</p-accordion-header>
