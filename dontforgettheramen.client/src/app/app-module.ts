@@ -15,6 +15,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { SkeletonModule } from 'primeng/skeleton';
 import { CheckboxModule } from 'primeng/checkbox';
 import { FloatLabelModule } from 'primeng/floatlabel';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { AccordionModule } from 'primeng/accordion';
+import { DividerModule } from 'primeng/divider';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
@@ -37,7 +40,10 @@ import { ShoppingListItemComponent } from './shopping-list-item-component/shoppi
     SkeletonModule,
     CheckboxModule,
     FormsModule,
-    FloatLabelModule
+    FloatLabelModule,
+    ScrollPanelModule,
+    AccordionModule,
+    DividerModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

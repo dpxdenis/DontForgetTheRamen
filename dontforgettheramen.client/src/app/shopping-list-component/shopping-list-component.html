@@ -1,2 +1,19 @@
-<app-shopping-list-item />
-<app-shopping-list-item />
+<p-scrollpanel [style]="{ width: '100%', height: '90vh' }">
+  <p-accordion value="0" styleClass="transparent-accordion">
+    <p-accordion-panel value="0">
+      <p-accordion-header>Open</p-accordion-header>
+      <p-accordion-content>
+        <app-shopping-list-item *ngFor="let item of openItems" [item]="item" />
+      </p-accordion-content>
+    </p-accordion-panel>
+  </p-accordion>
+
+  <p-accordion value="1" class="m-5">
+    <p-accordion-panel value="1">
+      <p-accordion-header>Closed</p-accordion-header>
+      <p-accordion-content>
+        <app-shopping-list-item *ngFor="let item of closedItems" [item]="item" />
+      </p-accordion-content>
+    </p-accordion-panel>
+  </p-accordion>
+</p-scrollpanel>

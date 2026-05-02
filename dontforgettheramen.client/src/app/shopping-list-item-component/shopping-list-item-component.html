@@ -1,5 +1,6 @@
-<div class="m-2">
-  <p-card header="{{item.quantity}}x {{item.articleName}}" class="border-round border-1 surface-border">
+<div class="mb-2">
+  <p-card header="{{ !skelletonTest ? getTitle() : '' }}" class="border-round border-1 surface-border mr-0 ml-0 pr-0 pl-0">
+    @if (!skelletonTest) {
     <div class="flex flex-row justify-content-between">
       <div>
         <span class="font-italic">{{item.description}}</span>
@@ -12,5 +13,11 @@
       </div>
       <p-checkbox [(ngModel)]="item.checked" [binary]="true" />
     </div>
+    }
+    @else {
+    <p-skeleton width="10rem" class="mb-2" />
+    <p-skeleton width="5rem" class="mb-2" />
+    <p-skeleton width="5rem" class="mb-2" />
+    }
   </p-card>
 </div>

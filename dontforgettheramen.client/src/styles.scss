@@ -4,3 +4,10 @@
 body {
   font-family: 'Roboto', Arial, sans-serif;
 }
+
+.p-accordion {
+  --p-accordion-header-background: transparent;
+  --p-accordion-header-hover-background: transparent;
+  --p-accordion-header-active-background: transparent;
+  --p-accordion-content-background: transparent;
+}
