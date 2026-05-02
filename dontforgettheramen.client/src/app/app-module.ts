@@ -9,29 +9,38 @@ import { OverlayBadgeModule } from 'primeng/overlaybadge';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { InputTextModule } from 'primeng/inputtext';
+import { CardModule } from 'primeng/card';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
+import { ShoppingList } from './shopping-list/shopping-list';
+import { ShoppingListItem } from './shopping-list-item/shopping-list-item';
 
 @NgModule({
-  declarations: [
-    App
-  ],
+  declarations: [App, ShoppingList, ShoppingListItem],
   imports: [
-    BrowserModule, HttpClientModule,
-    AppRoutingModule, MenubarModule, BadgeModule, OverlayBadgeModule, AvatarModule, AvatarGroupModule, InputTextModule
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    MenubarModule,
+    BadgeModule,
+    OverlayBadgeModule,
+    AvatarModule,
+    AvatarGroupModule,
+    InputTextModule,
+    CardModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {
-        preset: Aura
+        preset: Aura,
       },
-      ripple: true
-    })
+      ripple: true,
+    }),
   ],
-  bootstrap: [App]
+  bootstrap: [App],
 })
-export class AppModule { }
+export class AppModule {}
