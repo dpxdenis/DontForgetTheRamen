@@ -18,6 +18,7 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { AccordionModule } from 'primeng/accordion';
 import { DividerModule } from 'primeng/divider';
+import { ToastModule } from 'primeng/toast';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
@@ -43,7 +44,8 @@ import { ShoppingListItemComponent } from './shopping-list-item-component/shoppi
     FloatLabelModule,
     ScrollPanelModule,
     AccordionModule,
-    DividerModule
+    DividerModule,
+    ToastModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

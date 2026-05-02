@@ -5,10 +5,14 @@
       <div>
         <span class="font-italic">{{item.description}}</span>
         <div class="flex flex-row">
+          @if(item.price > 0) {
           <span class="pi pi-euro mt-3 mr-1 mb-0"></span>
           <p class="mr-5 mb-0">{{item.price}}</p>
+          }
+          @if(item.placeToBuy) {
           <span class="pi pi-shopping-cart mt-3 mr-1 mb-0"></span>
           <p class="mr-5 mb-0">{{item.placeToBuy}}</p>
+          }
           <span class="pi pi-user mt-3 mr-1 mb-0"></span>
           <p class="mr-5 mb-0">{{item.createdBy}}</p>
         </div>

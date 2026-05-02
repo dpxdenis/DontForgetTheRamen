@@ -36,8 +36,14 @@ export class StateService {
   }
 
   init() {
-    this.shoppingService.getShoppingItems().subscribe(items => {
-      this.items.set(items);
+    this.shoppingService.getShoppingItems().subscribe({
+      next: (items) => {
+        this.items.set(items);
+      },
+      error: (err) => {
+        console.error(err);
+      }
+
     });
   }
 
