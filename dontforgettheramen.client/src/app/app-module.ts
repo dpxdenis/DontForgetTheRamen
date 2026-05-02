@@ -24,6 +24,7 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { ShoppingListComponent } from './shopping-list-component/shopping-list-component';
 import { ShoppingListItemComponent } from './shopping-list-item-component/shopping-list-item-component';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [App, ShoppingListComponent, ShoppingListItemComponent],
@@ -56,6 +57,7 @@ import { ShoppingListItemComponent } from './shopping-list-item-component/shoppi
       },
       ripple: true,
     }),
+    MessageService
   ],
   bootstrap: [App],
 })

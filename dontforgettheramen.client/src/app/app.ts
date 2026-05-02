@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, signal } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { MenuItem, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +10,7 @@ import { MenuItem } from 'primeng/api';
 })
 export class App implements OnInit {
   items: MenuItem[] | undefined;
-
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   ngOnInit() {
     this.items = [

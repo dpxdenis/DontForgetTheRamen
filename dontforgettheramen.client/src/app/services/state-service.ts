@@ -1,6 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ShoppingService } from './shopping-service';
+import { MessageService } from 'primeng/api';
 
 export class ShoppingListItem {
   public itemId: number;
@@ -31,7 +32,7 @@ export class StateService {
 
   items = signal<ShoppingListItem[]>([]);
 
-  constructor(private shoppingService: ShoppingService) {
+  constructor(private shoppingService: ShoppingService, private messageService: MessageService) {
 
   }
 
@@ -39,6 +40,7 @@ export class StateService {
     this.shoppingService.getShoppingItems().subscribe({
       next: (items) => {
         this.items.set(items);
+        this.messageService.add({ severity: 'success', summary: 'DontForgetTheRamen', detail: `${items.length} shopping items loaded` });
       },
       error: (err) => {
         console.error(err);
