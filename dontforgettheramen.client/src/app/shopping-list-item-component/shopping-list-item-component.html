@@ -1,0 +1,16 @@
+<div class="m-2">
+  <p-card header="{{item.quantity}}x {{item.articleName}}" class="border-round border-1 surface-border">
+    <div class="flex flex-row justify-content-between">
+      <div>
+        <span class="font-italic">{{item.description}}</span>
+        <div class="flex flex-row">
+          <span class="pi pi-euro mt-3 mr-1"></span>
+          <p class="mr-5">{{item.price}}</p>
+          <span class="pi pi-shopping-cart mt-3 mr-1"></span>
+          <p>{{item.placeToBuy}}</p>
+        </div>
+      </div>
+      <p-checkbox [(ngModel)]="item.checked" [binary]="true" />
+    </div>
+  </p-card>
+</div>
