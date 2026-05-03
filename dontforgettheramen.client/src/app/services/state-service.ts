@@ -74,7 +74,7 @@ export class StateService {
     this.signalRService.startConnection();
     this.signalRService.onNewItem(item => {
       this.items.update(items => [...items, item]);
-      this.messageService.add({ severity: 'info', summary: 'DontForgetTheRamen', detail: `New shopping item '${item.articleName}' was added by ${item.createdBy}` });
+      this.messageService.add({ severity: 'info', summary: 'DontForgetTheRamen', detail: `New shopping item '${item.articleName}' was added by @${item.createdBy}` });
     })
   }
 
