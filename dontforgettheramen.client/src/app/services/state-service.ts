@@ -76,6 +76,14 @@ export class StateService {
       this.items.update(items => [...items, item]);
       this.messageService.add({ severity: 'info', summary: 'DontForgetTheRamen', detail: `New shopping item '${item.articleName}' was added by @${item.createdBy}` });
     })
+
+    this.signalRService.changeCheckedState((item, username) => {
+      this.items.update(currentItems =>
+        currentItems.map(currentItem => currentItem.itemId === item.itemId ? { ...currentItem, ...item } : currentItem)
+      );
+      let msg = item.checked ? 'Closed' : 'Open';
+      this.messageService.add({ severity: 'info', summary: 'DontForgetTheRamen', detail: `Shopping item '${item.articleName}' was set to '${msg}' by @${username}` });
+    });
   }
 
   addNewItem(articleName: string, quantity: number, description: string, price: number, placeToBuy: string) {
@@ -95,6 +103,10 @@ export class StateService {
   handleLogin(username: string, password: string) {
     this.username = username;
     this.messageService.add({ severity: 'success', summary: 'DontForgetTheRamen', detail: `Login successfull! Welcome back, @${this.username}!` });
+  }
+
+  sendCheckedState(shoppingListItem: ShoppingListItem) {
+    this.signalRService.sendChangeCheckedState(shoppingListItem, this.username);
   }
 
 }

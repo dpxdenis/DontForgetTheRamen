@@ -17,7 +17,7 @@
           <p class="mr-5 mb-0">{{item.createdBy}}</p>
         </div>
       </div>
-      <p-checkbox [(ngModel)]="item.checked" [binary]="true" />
+      <p-checkbox [(ngModel)]="item.checked" [binary]="true" (onChange)="onCheckedChange($event)" />
     </div>
     }
     @else {

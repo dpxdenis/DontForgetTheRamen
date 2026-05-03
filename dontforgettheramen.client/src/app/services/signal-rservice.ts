@@ -33,4 +33,12 @@ export class SignalRService {
     this.hubConnection.on('NewItem', callback);
   }
 
+  changeCheckedState(callback: (shoppingListItem: ShoppingListItem, username: string) => void) {
+    this.hubConnection.on('ChangedCheckedItem', callback);
+  }
+
+  sendChangeCheckedState(shoppingListItem: ShoppingListItem, username: string) {
+    this.hubConnection.invoke('SendCheckedUpdate', shoppingListItem, username);
+  }
+
 }

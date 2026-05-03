@@ -9,5 +9,10 @@ namespace DontForgetTheRamen.Server.Hubs
         {
             await Clients.All.SendAsync("NewItem", shoppingItem);
         }
+
+        public async Task SendCheckedUpdate(ShoppingListItem shoppingListItem, string username)
+        {
+            await Clients.Others.SendAsync("ChangedCheckedItem", shoppingListItem, username);
+        }
     }
 }
