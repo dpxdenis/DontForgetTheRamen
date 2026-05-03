@@ -4,12 +4,12 @@ import { MessageService } from 'primeng/api';
 import { ShoppingListItem, ShoppingListTempItem, StateService } from '../services/state-service';
 
 @Component({
-  selector: 'app-shopping-list-item-add-dialog-component',
+  selector: 'app-shopping-list-item-dialog-component',
   standalone: false,
-  templateUrl: './shopping-list-item-add-dialog-component.html',
-  styleUrl: './shopping-list-item-add-dialog-component.scss',
+  templateUrl: './shopping-list-item-dialog-component.html',
+  styleUrl: './shopping-list-item-dialog-component.scss',
 })
-export class ShoppingListItemAddDialogComponent {
+export class ShoppingListItemDialogComponent {
   visible: boolean = false;
 
   articleName: string = "";

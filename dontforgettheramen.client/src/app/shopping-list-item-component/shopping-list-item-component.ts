@@ -22,4 +22,8 @@ export class ShoppingListItemComponent {
   onCheckedChange(event: any) {
     this.stateService.sendCheckedState(this.item);
   }
+
+  openModifyDialog() {
+    console.log('test');
+  }
 }

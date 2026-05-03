@@ -29,7 +29,7 @@ import { App } from './app';
 import { ShoppingListComponent } from './shopping-list-component/shopping-list-component';
 import { ShoppingListItemComponent } from './shopping-list-item-component/shopping-list-item-component';
 import { MessageService } from 'primeng/api';
-import { ShoppingListItemAddDialogComponent } from './shopping-list-item-add-dialog-component/shopping-list-item-add-dialog-component';
+import { ShoppingListItemDialogComponent } from './shopping-list-item-dialog-component/shopping-list-item-dialog-component';
 import { LoginComponent } from './login-component/login-component';
 
 @NgModule({
@@ -37,7 +37,7 @@ import { LoginComponent } from './login-component/login-component';
     App,
     ShoppingListComponent,
     ShoppingListItemComponent,
-    ShoppingListItemAddDialogComponent,
+    ShoppingListItemDialogComponent,
     LoginComponent,
   ],
   imports: [

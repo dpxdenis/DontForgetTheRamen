@@ -1,7 +1,7 @@
 import { Component, ViewContainerRef, ViewChild, ComponentRef, OnInit } from '@angular/core';
 import { ShoppingListItemComponent } from '../shopping-list-item-component/shopping-list-item-component';
 import { ShoppingListItem, StateService } from '../services/state-service';
-import { ShoppingListItemAddDialogComponent } from '../shopping-list-item-add-dialog-component/shopping-list-item-add-dialog-component';
+import { ShoppingListItemDialogComponent } from '../shopping-list-item-dialog-component/shopping-list-item-dialog-component';
 
 @Component({
   selector: 'app-shopping-list',
@@ -12,7 +12,7 @@ import { ShoppingListItemAddDialogComponent } from '../shopping-list-item-add-di
 export class ShoppingListComponent implements OnInit {
 
   //items: ShoppingListItem[] = [];
-  @ViewChild('dialog') dialog!: ShoppingListItemAddDialogComponent;
+  @ViewChild('dialog') dialog!: ShoppingListItemDialogComponent;
   constructor(public stateService: StateService) {
 
   }

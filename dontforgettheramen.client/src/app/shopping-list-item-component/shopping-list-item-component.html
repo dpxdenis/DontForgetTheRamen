@@ -1,5 +1,5 @@
 <div class="mb-2">
-  <p-card header="{{ !skelleton ? getTitle() : '' }}" class="border-round border-1 surface-border mr-0 ml-0 pr-0 pl-0">
+  <p-card header="{{ !skelleton ? getTitle() : '' }}" class="border-round border-1 surface-border mr-0 ml-0 pr-0 pl-0" (click)="openModifyDialog()">
     @if (!skelleton) {
     <div class="flex flex-row justify-content-between">
       <div>
