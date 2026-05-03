@@ -4,7 +4,9 @@ namespace DontForgetTheRamen.Infrastructure
 {
     public class MockDataProvider
     {
-        public static MockDataProvider Instance => new MockDataProvider();
+        private static readonly MockDataProvider _instance = new MockDataProvider();
+        public static MockDataProvider Instance => _instance;
+
         public List<ShoppingListItem> Items { get; set; } = new List<ShoppingListItem>();
         private MockDataProvider()
         {

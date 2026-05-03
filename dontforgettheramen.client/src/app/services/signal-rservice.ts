@@ -1,0 +1,36 @@
+import { Injectable } from '@angular/core';
+import * as signalR from '@microsoft/signalr';
+import { MessageService } from 'primeng/api';
+import { ShoppingListItem } from './state-service';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class SignalRService {
+  private hubConnection!: signalR.HubConnection;
+
+  constructor(private messageService: MessageService) {
+
+  }
+
+  startConnection() {
+    this.hubConnection = new signalR.HubConnectionBuilder()
+      .withUrl('/hub/shoppingitem')
+      .withAutomaticReconnect()
+      .build();
+
+    this.hubConnection.start()
+      .then(() => {
+        this.messageService.add({ severity: 'success', summary: 'DontForgetTheRamen', detail: `Connected to SignalR Server!` });
+      })
+      .catch(err => {
+        console.error(err);
+        this.messageService.add({ severity: 'error', summary: 'DontForgetTheRamen', detail: `Cannot connect to SignalR Server!` });
+      });
+  }
+
+  onNewItem(callback: (shoppingListItem: ShoppingListItem) => void) {
+    this.hubConnection.on('NewItem', callback);
+  }
+
+}

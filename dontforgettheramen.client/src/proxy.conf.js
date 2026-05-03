@@ -10,6 +10,14 @@ const PROXY_CONFIG = [
     ],
     target,
     secure: false
+  },
+  {
+    context: [
+      "/hub/shoppingitem"
+    ],
+    target,
+    secure: false,
+    ws: true
   }
 ]
 
