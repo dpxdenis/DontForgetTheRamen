@@ -15,10 +15,12 @@
       </a>
     </ng-template>
     <ng-template #end>
+      @if (stateService.username !== '') {
       <div class="flex align-items-center gap-2">
-        <span>@username</span>
+        <span>@{{stateService.username}}</span>
         <p-avatar icon="pi pi-user" shape="circle" />
       </div>
+      }
     </ng-template>
   </p-menubar>
 </div>

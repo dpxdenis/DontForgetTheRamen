@@ -22,6 +22,7 @@ import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { PasswordModule } from 'primeng/password';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
@@ -61,6 +62,7 @@ import { LoginComponent } from './login-component/login-component';
     ButtonModule,
     DialogModule,
     InputNumberModule,
+    PasswordModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

@@ -92,4 +92,9 @@ export class StateService {
     });
   }
 
+  handleLogin(username: string, password: string) {
+    this.username = username;
+    this.messageService.add({ severity: 'success', summary: 'DontForgetTheRamen', detail: `Login successfull! Welcome back, @${this.username}!` });
+  }
+
 }
