@@ -60,7 +60,10 @@ export class StateService {
     this.shoppingService.getShoppingItems().subscribe({
       next: (items) => {
         this.items.set(items);
-        this.messageService.add({ severity: 'success', summary: 'DontForgetTheRamen', detail: `${items.length} shopping items loaded` });
+        //this.messageService.add({ severity: 'success', summary: 'DontForgetTheRamen', detail: `${items.length} shopping items loaded` });
+        if (items.length == 0) {
+          this.messageService.add({ severity: 'info', summary: 'DontForgetTheRamen', detail: `There are currently no shopping items, lets create one!` });
+        }
       },
       error: (err) => {
         console.error(err);

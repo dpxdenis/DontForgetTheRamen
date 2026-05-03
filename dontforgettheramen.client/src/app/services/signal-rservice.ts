@@ -21,7 +21,7 @@ export class SignalRService {
 
     this.hubConnection.start()
       .then(() => {
-        this.messageService.add({ severity: 'success', summary: 'DontForgetTheRamen', detail: `Connected to SignalR Server!` });
+        //this.messageService.add({ severity: 'success', summary: 'DontForgetTheRamen', detail: `Connected to SignalR Server!` });
       })
       .catch(err => {
         console.error(err);
