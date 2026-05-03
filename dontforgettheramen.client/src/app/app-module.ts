@@ -29,6 +29,7 @@ import { ShoppingListComponent } from './shopping-list-component/shopping-list-c
 import { ShoppingListItemComponent } from './shopping-list-item-component/shopping-list-item-component';
 import { MessageService } from 'primeng/api';
 import { ShoppingListItemAddDialogComponent } from './shopping-list-item-add-dialog-component/shopping-list-item-add-dialog-component';
+import { LoginComponent } from './login-component/login-component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ShoppingListItemAddDialogComponent } from './shopping-list-item-add-dia
     ShoppingListComponent,
     ShoppingListItemComponent,
     ShoppingListItemAddDialogComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,7 @@ import { ShoppingListItemAddDialogComponent } from './shopping-list-item-add-dia
     ToastModule,
     ButtonModule,
     DialogModule,
-    InputNumberModule
+    InputNumberModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

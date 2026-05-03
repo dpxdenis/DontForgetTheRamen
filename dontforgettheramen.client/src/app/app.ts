@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
+import { StateService } from './services/state-service';
 
 @Component({
   selector: 'app-root',
@@ -10,15 +11,15 @@ import { MenuItem, MessageService } from 'primeng/api';
 })
 export class App implements OnInit {
   items: MenuItem[] | undefined;
-  constructor() {}
+  constructor(protected stateService: StateService) {}
 
   ngOnInit() {
-    this.items = [
+    /*this.items = [
       {
         label: 'Home',
         icon: 'pi pi-home'
       }
-    ];
+    ];*/
   }
 
   protected readonly title = signal('dontforgettheramen.client');

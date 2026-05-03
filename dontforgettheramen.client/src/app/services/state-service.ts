@@ -50,7 +50,7 @@ export class ShoppingListTempItem {
 export class StateService {
 
   items = signal<ShoppingListItem[]>([]);
-  username = "TestUser";
+  username = "";
 
   constructor(private shoppingService: ShoppingService, private messageService: MessageService, private signalRService: SignalRService) {
 

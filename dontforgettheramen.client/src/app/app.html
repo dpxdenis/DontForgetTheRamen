@@ -3,6 +3,7 @@
   <p-menubar [model]="items">
     <ng-template #start>
       <p-avatar image="img.png" class="mr-2" size="normal" />
+      <span>DontForgetTheRamen</span>
     </ng-template>
     <ng-template #item let-item let-root="root">
       <a pRipple class="flex items-center px-2 py-1 cursor-pointer gap-2">
@@ -22,4 +23,9 @@
   </p-menubar>
 </div>
 
+@if (stateService.username === '') {
+<app-login-component />
+}
+@else {
 <app-shopping-list />
+}
