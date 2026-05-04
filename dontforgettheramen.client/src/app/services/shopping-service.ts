@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ShoppingListItem, ShoppingListTempItem } from './state-service';
+import { ShoppingListItem } from './state-service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,7 @@ export class ShoppingService {
     return this.http.get<ShoppingListItem[]>("api/ShoppingListItem");
   }
 
-  addNewShoppingItem(tempItem: ShoppingListTempItem): Observable<any> {
-    return this.http.post("api/ShoppingListItem", tempItem);
+  addNewShoppingItem(shoppingItem: ShoppingListItem): Observable<any> {
+    return this.http.post("api/ShoppingListItem", shoppingItem);
   }
 }

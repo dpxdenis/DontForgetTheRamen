@@ -17,15 +17,15 @@ namespace DontForgetTheRamen.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(ShoppingListTempItem shoppingListTempItem)
+        public async Task<ActionResult> Post(ShoppingListItem shoppingListItem)
         {
             var newItemId = MockDataProvider.Instance.Items[^1].ItemId + 1;
 
-            var newItem = shoppingListTempItem.ToShoppingListItem(newItemId);
+            shoppingListItem.ItemId = newItemId;
 
-            MockDataProvider.Instance.Items.Add(newItem);
+            MockDataProvider.Instance.Items.Add(shoppingListItem);
 
-            await shoppingItemHub.Clients.All.SendAsync("NewItem", newItem);
+            await shoppingItemHub.Clients.All.SendAsync("NewItem", shoppingListItem);
 
             return Ok();
         }

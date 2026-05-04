@@ -5,7 +5,7 @@
       <div>
         <span class="font-italic">{{item.description}}</span>
         <div class="flex flex-row">
-          @if(item.price > 0) {
+          @if(item.price! > 0) {
           <span class="pi pi-euro mt-3 mr-1 mb-0"></span>
           <p class="mr-5 mb-0">{{item.price}}</p>
           }

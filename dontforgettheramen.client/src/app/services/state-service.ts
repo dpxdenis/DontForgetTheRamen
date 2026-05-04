@@ -5,15 +5,15 @@ import { MessageService } from 'primeng/api';
 import { SignalRService } from './signal-rservice';
 
 export class ShoppingListItem {
-  public itemId: number;
+  public itemId: number | undefined;
   public articleName: string;
-  public createdBy: string;
+  public createdBy: string | undefined;
   public quantity: number;
-  public description: string;
-  public price: number;
-  public placeToBuy: string;
+  public description: string | undefined;
+  public price: number | undefined;
+  public placeToBuy: string | undefined;
   public checked: boolean;
-  constructor(itemId: number, articleName: string, createdBy: string, quantity: number, description: string, price: number, placeToBuy: string, checked: boolean) {
+  constructor(itemId: number | undefined, articleName: string, createdBy: string | undefined, quantity: number, description: string | undefined, price: number | undefined, placeToBuy: string | undefined, checked: boolean) {
     this.itemId = itemId;
     this.articleName = articleName;
     this.createdBy = createdBy;
@@ -22,24 +22,6 @@ export class ShoppingListItem {
     this.price = price;
     this.placeToBuy = placeToBuy;
     this.checked = checked;
-  }
-
-}
-
-export class ShoppingListTempItem {
-  public articleName: string;
-  public createdBy: string;
-  public quantity: number;
-  public description: string;
-  public price: number;
-  public placeToBuy: string;
-  constructor(articleName: string, createdBy: string, quantity: number, description: string, price: number, placeToBuy: string) {
-    this.articleName = articleName;
-    this.createdBy = createdBy;
-    this.quantity = quantity;
-    this.description = description;
-    this.price = price;
-    this.placeToBuy = placeToBuy;
   }
 
 }
@@ -86,10 +68,10 @@ export class StateService {
     });
   }
 
-  addNewItem(articleName: string, quantity: number, description: string, price: number, placeToBuy: string) {
-    let tempItem = new ShoppingListTempItem(articleName, this.username, quantity, description, price, placeToBuy);
-
-    this.shoppingService.addNewShoppingItem(tempItem).subscribe({
+  addNewItem(shoppingItem: ShoppingListItem) {
+    shoppingItem.itemId = -1;
+    shoppingItem.createdBy = this.username;
+    this.shoppingService.addNewShoppingItem(shoppingItem).subscribe({
       next: () => {
 
       },

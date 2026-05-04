@@ -2,7 +2,7 @@
   <span class="p-text-secondary block mb-5">Add something to the shopping card</span>
 
   <div class="flex">
-    <p-inputnumber [(ngModel)]="quantity" [showButtons]="true" buttonLayout="vertical" spinnerMode="vertical" inputId="vertical" [inputStyle]="{ width: '5rem', height: '2rem' }" [style]="{height: '2rem'}" class="mr-2">
+    <p-inputnumber [(ngModel)]="article.quantity" [showButtons]="true" buttonLayout="vertical" spinnerMode="vertical" inputId="vertical" [inputStyle]="{ width: '5rem', height: '2rem' }" [style]="{height: '2rem'}" class="mr-2">
       <ng-template #incrementbuttonicon>
         <span class="pi pi-plus"></span>
       </ng-template>
@@ -12,23 +12,23 @@
     </p-inputnumber>
 
       <p-floatlabel variant="in" class="w-full mb-6 mt-4">
-        <input pInputText id="article_name_label" [(ngModel)]="articleName" autocomplete="off" class="w-full" />
+        <input pInputText id="article_name_label" [(ngModel)]="article.articleName" autocomplete="off" class="w-full" />
         <label for="article_name_label">Article Name</label>
       </p-floatlabel>
   </div>
 
     <p-floatlabel variant="in" class="w-full mb-2">
-      <input pInputText id="description_label" [(ngModel)]="description" autocomplete="off" class="w-full" />
+      <input pInputText id="description_label" [(ngModel)]="article.description" autocomplete="off" class="w-full" />
       <label for="description_label">Description (Optional)</label>
     </p-floatlabel>
 
     <p-floatlabel variant="in" class="w-full mb-2">
-      <p-inputnumber [(ngModel)]="price" mode="currency" inputId="price_label" currency="EUR" locale="de-DE" class="w-full" />
+      <p-inputnumber [(ngModel)]="article.price" mode="currency" inputId="price_label" currency="EUR" locale="de-DE" class="w-full" />
       <label for="price_label">Price (Optional)</label>
     </p-floatlabel>
 
     <p-floatlabel variant="in" class="w-full mb-2">
-      <input pInputText id="market_label" [(ngModel)]="placeToBuy" autocomplete="off" class="w-full" />
+      <input pInputText id="market_label" [(ngModel)]="article.placeToBuy" autocomplete="off" class="w-full" />
       <label for="market_label">Market (Optional)</label>
     </p-floatlabel>
 
