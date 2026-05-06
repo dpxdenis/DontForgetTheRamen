@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -31,6 +31,7 @@ import { ShoppingListItemComponent } from './shopping-list-item-component/shoppi
 import { MessageService } from 'primeng/api';
 import { ShoppingListItemDialogComponent } from './shopping-list-item-dialog-component/shopping-list-item-dialog-component';
 import { LoginComponent } from './login-component/login-component';
+import { authInterceptor } from './interceptors/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,6 @@ import { LoginComponent } from './login-component/login-component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     AppRoutingModule,
     MenubarModule,
     BadgeModule,
@@ -67,13 +67,14 @@ import { LoginComponent } from './login-component/login-component';
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideAnimationsAsync(),
+    provideHttpClient(withInterceptors([authInterceptor])),
     providePrimeNG({
       theme: {
         preset: Aura,
       },
       ripple: true,
     }),
-    MessageService,
+    MessageService
   ],
   bootstrap: [App],
 })

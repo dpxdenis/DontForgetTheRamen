@@ -15,7 +15,7 @@ export class SignalRService {
 
   startConnection() {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('/hub/shoppingitem')
+      .withUrl('/hub/shoppingitem', {accessTokenFactory: () => localStorage.getItem('token') || ''})
       .withAutomaticReconnect()
       .build();
 

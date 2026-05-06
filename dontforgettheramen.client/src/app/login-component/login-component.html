@@ -10,11 +10,12 @@
         </p-floatlabel>
 
         <p-floatlabel variant="in" class="w-full">
-          <p-password inputId="password_label" [(ngModel)]="password" autocomplete="off" styleClass="w-full" inputStyleClass="w-full" />
+          <p-password inputId="password_label" [(ngModel)]="password" autocomplete="off" styleClass="w-full" inputStyleClass="w-full" [feedback]="false" />
           <label for="password_label">Password</label>
         </p-floatlabel>
 
-        <p-button label="Login" styleClass="mb-8 w-full" (click)="login()" />
+        <p-button label="Login" styleClass="w-full" (click)="login()" />
+        <p-button label="Register" styleClass="mb-8 w-full" (click)="register()" severity="secondary"/>
       </div>
     </div>
   </p-card>

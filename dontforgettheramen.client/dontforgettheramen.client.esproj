@@ -8,6 +8,7 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\dontforgettheramen.client\browser\</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="src\app\interceptors\" />
     <Folder Include="src\app\services\" />
   </ItemGroup>
 </Project>

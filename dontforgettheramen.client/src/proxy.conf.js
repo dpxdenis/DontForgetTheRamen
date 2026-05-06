@@ -7,6 +7,8 @@ const PROXY_CONFIG = [
   {
     context: [
       "/api/ShoppingListItem",
+      "/api/auth/login",
+      "/api/auth/register"
     ],
     target,
     secure: false
