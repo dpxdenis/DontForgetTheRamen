@@ -33,10 +33,4 @@
     <Folder Include="Hubs\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="app.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
