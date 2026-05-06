@@ -27,7 +27,7 @@ namespace DontForgetTheRamen.Infrastructure.Services
             log.Debug("Adding new item done!");
         }
 
-        public async Task<bool> EditItem(ShoppingListItem shoppingListItem)
+        public async Task<bool> EditItem(ShoppingListItem shoppingListItem, string username)
         {
             log.Debug($"Modifying item with id {shoppingListItem.Id}...");
             var exisitingItem = await appDbContext.ShoppingListItems.FirstOrDefaultAsync(x => x.Id == shoppingListItem.Id);
@@ -42,7 +42,7 @@ namespace DontForgetTheRamen.Infrastructure.Services
             await appDbContext.SaveChangesAsync();
 
             log.Debug("Sending change to all clients...");
-            await shoppingItemHub.Clients.All.SendAsync("UpdatedItem", shoppingListItem);
+            await shoppingItemHub.Clients.All.SendAsync("UpdatedItem", shoppingListItem, username);
             log.Debug("Sending change to all clients done!");
             log.Debug($"Modifying item with id {exisitingItem.Id} done!");
 

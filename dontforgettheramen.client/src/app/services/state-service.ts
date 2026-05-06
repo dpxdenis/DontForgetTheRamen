@@ -57,18 +57,22 @@ export class StateService {
 
     this.signalRService.onNewItem(item => {
       this.items.update(items => [...items, item]);
-      this.messageService.add({ severity: 'info', summary: 'DontForgetTheRamen', detail: `New shopping item '${item.articleName}' was added by @${item.createdBy}` });
+      if (this.username !== item.createdBy) {
+        this.messageService.add({ severity: 'info', summary: 'DontForgetTheRamen', detail: `New shopping item '${item.articleName}' was added by @${item.createdBy}` });
+      } else {
+        this.messageService.add({ severity: 'success', summary: 'DontForgetTheRamen', detail: `New shopping item '${item.articleName}' created.` });
+      }
     })
 
-    this.signalRService.changeCheckedState((item, username) => {
+    /*this.signalRService.changeCheckedState((item, username) => {
       this.items.update(currentItems =>
         currentItems.map(currentItem => currentItem.id === item.id ? { ...currentItem, ...item } : currentItem)
       );
       let msg = item.checked ? 'Closed' : 'Open';
       this.messageService.add({ severity: 'info', summary: 'DontForgetTheRamen', detail: `Shopping item '${item.articleName}' was set to '${msg}' by @${username}` });
-    });
+    });*/
 
-    this.signalRService.onUpdatedItem((item) => {
+    this.signalRService.onUpdatedItem((item, username) => {
       let changes = "";
       this.items.update(currentItems =>
         currentItems.map(currentItem => {
@@ -79,7 +83,12 @@ export class StateService {
           return currentItem;
         })
       );
-      this.messageService.add({ severity: 'info', summary: 'DontForgetTheRamen', detail: `Shopping item '${item.articleName}' was updated.${changes}` });
+
+      if (this.username !== username) {
+        this.messageService.add({ severity: 'info', summary: 'DontForgetTheRamen', detail: `Shopping item '${item.articleName}' was updated by @${username}.${changes}` });
+      } else {
+        this.messageService.add({ severity: 'success', summary: 'DontForgetTheRamen', detail: `Shopping item '${item.articleName}' was updated.` });
+      }
     })
   }
 

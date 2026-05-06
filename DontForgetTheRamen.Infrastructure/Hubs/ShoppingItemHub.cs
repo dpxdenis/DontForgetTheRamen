@@ -10,14 +10,14 @@ namespace DontForgetTheRamen.Infrastructure.Hubs
             await Clients.All.SendAsync("NewItem", shoppingItem);
         }
 
-        public async Task SendCheckedUpdate(ShoppingListItem shoppingListItem, string username)
+        /*public async Task SendCheckedUpdate(ShoppingListItem shoppingListItem, string username)
         {
             await Clients.Others.SendAsync("ChangedCheckedItem", shoppingListItem, username);
-        }
+        }*/
 
-        public async Task SendUpdatedItem(ShoppingListItem shoppingListItem)
+        public async Task SendUpdatedItem(ShoppingListItem shoppingListItem, string username)
         {
-            await Clients.All.SendAsync("UpdatedItem", shoppingListItem);
+            await Clients.All.SendAsync("UpdatedItem", shoppingListItem, username);
         }
     }
 }

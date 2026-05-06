@@ -26,6 +26,7 @@ namespace DontForgetTheRamen.Server.Controllers
         [HttpPost]
         public async Task<ActionResult> Post(ShoppingListItem shoppingListItem)
         {
+             
             await shoppingListItemService.AddItem(shoppingListItem);
             return Ok();
         }
@@ -35,7 +36,7 @@ namespace DontForgetTheRamen.Server.Controllers
         public async Task<ActionResult> Put(ShoppingListItem shoppingListItem)
         {
 
-            var result = await shoppingListItemService.EditItem(shoppingListItem);
+            var result = await shoppingListItemService.EditItem(shoppingListItem, User.Identity?.Name);
             if (!result) return BadRequest();
             return Ok();
         }

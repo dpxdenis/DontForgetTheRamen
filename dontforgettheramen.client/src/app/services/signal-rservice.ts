@@ -41,7 +41,7 @@ export class SignalRService {
     this.hubConnection.invoke('SendCheckedUpdate', shoppingListItem, username);
   }*/
 
-  onUpdatedItem(callback: (shoppingListItem: ShoppingListItem) => void) {
+  onUpdatedItem(callback: (shoppingListItem: ShoppingListItem, username: string) => void) {
     this.hubConnection.on('UpdatedItem', callback);
   }
 

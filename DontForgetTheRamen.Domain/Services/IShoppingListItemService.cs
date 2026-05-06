@@ -9,6 +9,6 @@ namespace DontForgetTheRamen.Domain.Services
     {
         public Task<List<ShoppingListItem>> GetItems();
         public Task AddItem(ShoppingListItem shoppingListItem);
-        public Task<bool> EditItem(ShoppingListItem shoppingListItem);
+        public Task<bool> EditItem(ShoppingListItem shoppingListItem, string username);
     }
 }
