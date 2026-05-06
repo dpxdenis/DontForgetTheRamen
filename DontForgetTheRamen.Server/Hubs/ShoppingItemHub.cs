@@ -17,7 +17,7 @@ namespace DontForgetTheRamen.Server.Hubs
 
         public async Task SendUpdatedItem(ShoppingListItem shoppingListItem)
         {
-            await Clients.Others.SendAsync("UpdatedItem", shoppingListItem);
+            await Clients.All.SendAsync("UpdatedItem", shoppingListItem);
         }
     }
 }
