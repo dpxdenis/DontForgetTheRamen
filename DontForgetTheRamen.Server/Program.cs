@@ -3,6 +3,8 @@ using DontForgetTheRamen.Server.Hubs;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Logging.ClearProviders();
+builder.Logging.AddLog4Net("log4net.config");
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
