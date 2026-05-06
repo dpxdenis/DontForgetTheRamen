@@ -54,6 +54,7 @@ export class StateService {
     });
 
     this.signalRService.startConnection();
+
     this.signalRService.onNewItem(item => {
       this.items.update(items => [...items, item]);
       this.messageService.add({ severity: 'info', summary: 'DontForgetTheRamen', detail: `New shopping item '${item.articleName}' was added by @${item.createdBy}` });
@@ -66,6 +67,44 @@ export class StateService {
       let msg = item.checked ? 'Closed' : 'Open';
       this.messageService.add({ severity: 'info', summary: 'DontForgetTheRamen', detail: `Shopping item '${item.articleName}' was set to '${msg}' by @${username}` });
     });
+
+    this.signalRService.onUpdatedItem((item) => {
+      let changes = "";
+      this.items.update(currentItems =>
+        currentItems.map(currentItem => {
+          if (currentItem.itemId === item.itemId) {
+            changes = this.getChanges(currentItem, item);
+            return { ...currentItem, ...item };
+          }
+          return currentItem;
+        })
+      );
+      this.messageService.add({ severity: 'info', summary: 'DontForgetTheRamen', detail: `Shopping item '${item.articleName}' was updated.\n${changes}` });
+    })
+  }
+
+  private getChanges(oldItem: ShoppingListItem, newItem: ShoppingListItem): string {
+    let changes = "Changes:";
+    if (oldItem.quantity !== newItem.quantity) {
+      changes += `\n- Quantity was updated from ${oldItem.quantity} to ${newItem.quantity}`;
+    }
+
+    if (oldItem.articleName !== newItem.articleName) {
+      changes += `\n- Name was updated from ${oldItem.articleName} to ${newItem.articleName}`;
+    }
+
+    if (oldItem.description !== newItem.description) {
+      changes += `\n- Description was updated from '${oldItem.description}' to '${newItem.description}'`;
+    }
+
+    if (oldItem.price !== newItem.price) {
+      changes += `\n- Price was updated from ${oldItem.price} to ${newItem.price}`;
+    }
+
+    if (oldItem.placeToBuy !== newItem.placeToBuy) {
+      changes += `\n- Place to buy was updated from '${oldItem.placeToBuy}' to '${newItem.placeToBuy}'`;
+    }
+    return changes;
   }
 
   addNewItem(shoppingItem: ShoppingListItem) {
@@ -78,6 +117,18 @@ export class StateService {
       error: (err) => {
         console.error(err);
         this.messageService.add({ severity: 'error', summary: 'DontForgetTheRamen', detail: `Failed to create new shopping list item!` });
+      }
+    });
+  }
+
+  updateItem(shoppingItem: ShoppingListItem) {
+    this.shoppingService.updateShoppingItem(shoppingItem).subscribe({
+      next: () => {
+
+      },
+      error: (err) => {
+        console.error(err);
+        this.messageService.add({ severity: 'error', summary: 'DontForgetTheRamen', detail: `Failed to modify shopping list item!` });
       }
     });
   }

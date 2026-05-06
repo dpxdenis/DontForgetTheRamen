@@ -1,8 +1,9 @@
+<app-shopping-list-item-dialog-component #dialog [article]="item" />
 <div class="mb-2">
-  <p-card header="{{ !skelleton ? getTitle() : '' }}" class="border-round border-1 surface-border mr-0 ml-0 pr-0 pl-0" (click)="openModifyDialog()">
+  <p-card header="{{ !skelleton ? getTitle() : '' }}" class="border-round border-1 surface-border mr-0 ml-0 pr-0 pl-0 clickable-card" (click)="openModifyDialog()">
     @if (!skelleton) {
     <div class="flex flex-row justify-content-between">
-      <div>
+      <div class="w-full">
         <span class="font-italic">{{item.description}}</span>
         <div class="flex flex-row">
           @if(item.price! > 0) {

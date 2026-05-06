@@ -19,4 +19,8 @@ export class ShoppingService {
   addNewShoppingItem(shoppingItem: ShoppingListItem): Observable<any> {
     return this.http.post("api/ShoppingListItem", shoppingItem);
   }
+
+  updateShoppingItem(shoppingItem: ShoppingListItem): Observable<any> {
+    return this.http.put("api/ShoppingListItem", shoppingItem);
+  }
 }

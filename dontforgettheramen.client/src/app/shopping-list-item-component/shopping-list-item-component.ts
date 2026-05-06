@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { ShoppingListItem, StateService } from '../services/state-service';
+import { ShoppingListItemDialogComponent } from '../shopping-list-item-dialog-component/shopping-list-item-dialog-component';
 
 @Component({
   selector: 'app-shopping-list-item',
@@ -10,6 +11,7 @@ import { ShoppingListItem, StateService } from '../services/state-service';
 export class ShoppingListItemComponent {
   @Input() skelleton: boolean = false;
   @Input() item: ShoppingListItem = new ShoppingListItem(0, "Demo Article", "admin", 1, "yes a article", 7.77, "Kaufland", false);
+  @ViewChild('dialog') dialog!: ShoppingListItemDialogComponent;
 
   constructor(private stateService: StateService) {
 
@@ -24,6 +26,6 @@ export class ShoppingListItemComponent {
   }
 
   openModifyDialog() {
-    console.log('test');
+    this.dialog.showDialog();
   }
 }

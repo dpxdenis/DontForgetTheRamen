@@ -29,5 +29,22 @@ namespace DontForgetTheRamen.Server.Controllers
 
             return Ok();
         }
+
+        [HttpPut]
+        public async Task<ActionResult> Put(ShoppingListItem shoppingListItem)
+        {
+            var index = MockDataProvider.Instance.Items.FindIndex(x => x.ItemId == shoppingListItem.ItemId);
+
+            if(index != -1 )
+            {
+                MockDataProvider.Instance.Items[index] = shoppingListItem;
+                await shoppingItemHub.Clients.All.SendAsync("UpdatedItem", shoppingListItem);
+                return Ok();
+            } else
+            {
+                return BadRequest();
+            }
+
+        }
     }
 }

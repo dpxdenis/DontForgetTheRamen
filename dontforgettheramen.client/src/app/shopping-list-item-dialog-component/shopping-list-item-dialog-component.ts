@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import { ShoppingService } from '../services/shopping-service';
-import { MessageService } from 'primeng/api';
+import { Component, Input } from '@angular/core';
 import { ShoppingListItem, StateService } from '../services/state-service';
 
 @Component({
@@ -12,10 +10,14 @@ import { ShoppingListItem, StateService } from '../services/state-service';
 export class ShoppingListItemDialogComponent {
   visible: boolean = false;
 
-  article: ShoppingListItem = new ShoppingListItem(-1, "", "", 1, "", 0.00, "", false);
+  @Input() article: ShoppingListItem = new ShoppingListItem(-1, "", "", 1, "", 0.00, "", false);
 
   constructor(private stateService: StateService) {
 
+  }
+
+  isNewItem(): boolean {
+    return this.article.itemId === -1;
   }
 
   showDialog() {
@@ -23,13 +25,17 @@ export class ShoppingListItemDialogComponent {
   }
 
   save() {
-    this.stateService.addNewItem(this.article);
+    if (this.isNewItem()) {
+      this.stateService.addNewItem(this.article);
+    } else {
+      this.stateService.updateItem(this.article);
+    }
     this.visible = false
     this.reset();
   }
 
   reset() {
-    if (this.article.itemId === -1) {
+    if (this.isNewItem()) {
       this.article.articleName = "";
       this.article.quantity = 1;
       this.article.description = "";

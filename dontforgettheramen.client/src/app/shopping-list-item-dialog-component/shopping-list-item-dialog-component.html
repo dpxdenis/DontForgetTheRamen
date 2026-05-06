@@ -1,5 +1,5 @@
-<p-dialog header="Add Item" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
-  <span class="p-text-secondary block mb-5">Add something to the shopping card</span>
+<p-dialog header="{{isNewItem() ? 'Add item' : 'Modify item'}}" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+  <span class="p-text-secondary block mb-5">{{isNewItem() ? 'Add something to the shopping cart' : 'Edit the shopping cart item'}}</span>
 
   <div class="flex">
     <p-inputnumber [(ngModel)]="article.quantity" [showButtons]="true" buttonLayout="vertical" spinnerMode="vertical" inputId="vertical" [inputStyle]="{ width: '5rem', height: '2rem' }" [style]="{height: '2rem'}" class="mr-2">
@@ -34,6 +34,6 @@
 
   <div class="flex justify-end gap-2 mt-4">
     <p-button label="Cancel" severity="secondary" (click)="cancel()" />
-    <p-button label="Save" (click)="save()" />
+    <p-button label="{{isNewItem() ? 'Save' : 'Save changes'}}" (click)="save()" />
   </div>
 </p-dialog>
