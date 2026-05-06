@@ -28,6 +28,9 @@ export class ShoppingListItemComponent {
   }
 
   openModifyDialog() {
-    if(!this.skelleton) this.dialog.showDialog();
+    if (!this.skelleton) {
+      this.dialog.article = { ...this.item };
+      this.dialog.showDialog();
+    }
   }
 }

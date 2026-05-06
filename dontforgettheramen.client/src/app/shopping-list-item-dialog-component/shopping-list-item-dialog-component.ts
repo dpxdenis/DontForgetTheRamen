@@ -13,7 +13,6 @@ export class ShoppingListItemDialogComponent {
   @Input() article: ShoppingListItem = new ShoppingListItem("", 1, false);
 
   constructor(private stateService: StateService) {
-
   }
 
   isNewItem(): boolean {

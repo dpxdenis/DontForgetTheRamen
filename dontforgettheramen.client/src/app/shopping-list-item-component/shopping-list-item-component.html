@@ -1,4 +1,4 @@
-<app-shopping-list-item-dialog-component #dialog [article]="item" />
+<app-shopping-list-item-dialog-component #dialog />
 <div class="mb-2">
   <p-card header="{{ !skelleton ? getTitle() : '' }}" class="border-round border-1 surface-border mr-0 ml-0 pr-0 pl-0 clickable-card" (click)="openModifyDialog()">
     @if (!skelleton) {
