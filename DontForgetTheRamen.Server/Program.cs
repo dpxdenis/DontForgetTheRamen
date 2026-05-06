@@ -1,4 +1,7 @@
-using DontForgetTheRamen.Server.Hubs;
+using DontForgetTheRamen.Domain.Services;
+using DontForgetTheRamen.Infrastructure;
+using DontForgetTheRamen.Infrastructure.Hubs;
+using DontForgetTheRamen.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +13,8 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddSignalR();
+builder.Services.AddDbContext<AppDbContext>();
+builder.Services.AddScoped<IShoppingListItemService, ShoppingListItemService>();
 
 var app = builder.Build();
 

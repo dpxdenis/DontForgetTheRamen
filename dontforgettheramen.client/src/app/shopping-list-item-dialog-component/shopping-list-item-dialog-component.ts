@@ -10,14 +10,14 @@ import { ShoppingListItem, StateService } from '../services/state-service';
 export class ShoppingListItemDialogComponent {
   visible: boolean = false;
 
-  @Input() article: ShoppingListItem = new ShoppingListItem(-1, "", "", 1, "", 0.00, "", false);
+  @Input() article: ShoppingListItem = new ShoppingListItem("", 1, false);
 
   constructor(private stateService: StateService) {
 
   }
 
   isNewItem(): boolean {
-    return this.article.itemId === -1;
+    return this.article.id === undefined;
   }
 
   showDialog() {

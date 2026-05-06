@@ -1,7 +1,7 @@
-﻿using DontForgetTheRamen.Domain;
+﻿using DontForgetTheRamen.Domain.Models;
 using Microsoft.AspNetCore.SignalR;
 
-namespace DontForgetTheRamen.Server.Hubs
+namespace DontForgetTheRamen.Infrastructure.Hubs
 {
     public class ShoppingItemHub : Hub
     {

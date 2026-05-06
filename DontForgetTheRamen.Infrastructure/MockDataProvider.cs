@@ -1,4 +1,4 @@
-﻿using DontForgetTheRamen.Domain;
+﻿using DontForgetTheRamen.Domain.Models;
 
 namespace DontForgetTheRamen.Infrastructure
 {
@@ -13,7 +13,7 @@ namespace DontForgetTheRamen.Infrastructure
             //Open mock data
             Items.Add(new ShoppingListItem()
             {
-                ItemId = 0,
+                Id = 0,
                 ArticleName = "Banana",
                 Quantity = 1,
                 CreatedBy = "mock",
@@ -24,7 +24,7 @@ namespace DontForgetTheRamen.Infrastructure
 
             Items.Add(new ShoppingListItem()
             {
-                ItemId = 1,
+                Id = 1,
                 ArticleName = "Apple",
                 Quantity = 2,
                 CreatedBy = "mock",
@@ -34,7 +34,7 @@ namespace DontForgetTheRamen.Infrastructure
 
             Items.Add(new ShoppingListItem()
             {
-                ItemId = 2,
+                Id = 2,
                 ArticleName = "Potato",
                 Quantity = 1,
                 CreatedBy = "mock",
@@ -43,7 +43,7 @@ namespace DontForgetTheRamen.Infrastructure
 
             Items.Add(new ShoppingListItem()
             {
-                ItemId = 3,
+                Id = 3,
                 ArticleName = "Other Potato",
                 Quantity = 1,
                 CreatedBy = "mock",
@@ -52,7 +52,7 @@ namespace DontForgetTheRamen.Infrastructure
             //closed mock data
             Items.Add(new ShoppingListItem()
             {
-                ItemId = 4,
+                Id = 4,
                 ArticleName = "Pizza",
                 Quantity = 1,
                 CreatedBy = "mock",
@@ -64,7 +64,7 @@ namespace DontForgetTheRamen.Infrastructure
 
             Items.Add(new ShoppingListItem()
             {
-                ItemId = 5,
+                Id = 5,
                 ArticleName = "Chicken Wings",
                 Quantity = 2,
                 CreatedBy = "mock",

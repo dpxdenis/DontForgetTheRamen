@@ -5,16 +5,16 @@ import { MessageService } from 'primeng/api';
 import { SignalRService } from './signal-rservice';
 
 export class ShoppingListItem {
-  public itemId: number | undefined;
+  public id?: number;
   public articleName: string;
-  public createdBy: string | undefined;
+  public createdBy?: string;
   public quantity: number;
-  public description: string | undefined;
-  public price: number | undefined;
-  public placeToBuy: string | undefined;
+  public description?: string;
+  public price?: number;
+  public placeToBuy?: string;
   public checked: boolean;
-  constructor(itemId: number | undefined, articleName: string, createdBy: string | undefined, quantity: number, description: string | undefined, price: number | undefined, placeToBuy: string | undefined, checked: boolean) {
-    this.itemId = itemId;
+  constructor(articleName: string, quantity: number, checked: boolean, id?: number, createdBy?: string, description?: string, price?: number, placeToBuy?: string) {
+    this.id = id;
     this.articleName = articleName;
     this.createdBy = createdBy;
     this.quantity = quantity;
@@ -62,7 +62,7 @@ export class StateService {
 
     this.signalRService.changeCheckedState((item, username) => {
       this.items.update(currentItems =>
-        currentItems.map(currentItem => currentItem.itemId === item.itemId ? { ...currentItem, ...item } : currentItem)
+        currentItems.map(currentItem => currentItem.id === item.id ? { ...currentItem, ...item } : currentItem)
       );
       let msg = item.checked ? 'Closed' : 'Open';
       this.messageService.add({ severity: 'info', summary: 'DontForgetTheRamen', detail: `Shopping item '${item.articleName}' was set to '${msg}' by @${username}` });
@@ -72,7 +72,7 @@ export class StateService {
       let changes = "";
       this.items.update(currentItems =>
         currentItems.map(currentItem => {
-          if (currentItem.itemId === item.itemId) {
+          if (currentItem.id === item.id) {
             changes = this.getChanges(currentItem, item);
             return { ...currentItem, ...item };
           }
@@ -112,7 +112,6 @@ export class StateService {
   }
 
   addNewItem(shoppingItem: ShoppingListItem) {
-    shoppingItem.itemId = -1;
     shoppingItem.createdBy = this.username;
     this.shoppingService.addNewShoppingItem(shoppingItem).subscribe({
       next: () => {

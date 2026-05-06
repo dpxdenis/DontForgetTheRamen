@@ -1,6 +1,7 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { ShoppingListItem, StateService } from '../services/state-service';
 import { ShoppingListItemDialogComponent } from '../shopping-list-item-dialog-component/shopping-list-item-dialog-component';
+import { Skeleton } from 'primeng/skeleton';
 
 @Component({
   selector: 'app-shopping-list-item',
@@ -10,7 +11,7 @@ import { ShoppingListItemDialogComponent } from '../shopping-list-item-dialog-co
 })
 export class ShoppingListItemComponent {
   @Input() skelleton: boolean = false;
-  @Input() item: ShoppingListItem = new ShoppingListItem(0, "Demo Article", "admin", 1, "yes a article", 7.77, "Kaufland", false);
+  @Input() item: ShoppingListItem = new ShoppingListItem("Potato", 1, false, -1, "admin", "they should be on sale", 0.99, "DontForgetTheRamenMarket");
   @ViewChild('dialog') dialog!: ShoppingListItemDialogComponent;
 
   constructor(private stateService: StateService) {
@@ -27,6 +28,6 @@ export class ShoppingListItemComponent {
   }
 
   openModifyDialog() {
-    this.dialog.showDialog();
+    if(!this.skelleton) this.dialog.showDialog();
   }
 }

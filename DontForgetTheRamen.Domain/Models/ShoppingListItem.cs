@@ -1,8 +1,8 @@
-﻿namespace DontForgetTheRamen.Domain
+﻿namespace DontForgetTheRamen.Domain.Models
 {
     public class ShoppingListItem
     {
-        public required long ItemId { get; set; }
+        public int Id { get; set; }
         public required string ArticleName { get; set; }
         public required string CreatedBy { get; set; }
         public required int Quantity { get; set; }
