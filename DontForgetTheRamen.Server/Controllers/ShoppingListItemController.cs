@@ -1,6 +1,7 @@
 ﻿using DontForgetTheRamen.Domain;
 using DontForgetTheRamen.Infrastructure;
 using DontForgetTheRamen.Server.Hubs;
+using log4net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 
@@ -10,6 +11,9 @@ namespace DontForgetTheRamen.Server.Controllers
     [Route("api/[controller]")]
     public class ShoppingListItemController(IHubContext<ShoppingItemHub> shoppingItemHub) : ControllerBase
     {
+
+        private static readonly ILog log = LogManager.GetLogger(typeof(ShoppingListItemController));
+
         [HttpGet]
         public IEnumerable<ShoppingListItem> Get()
         {
@@ -20,13 +24,13 @@ namespace DontForgetTheRamen.Server.Controllers
         public async Task<ActionResult> Post(ShoppingListItem shoppingListItem)
         {
             var newItemId = MockDataProvider.Instance.Items[^1].ItemId + 1;
-
+            log.Debug($"Adding new item with id '{newItemId}'");
             shoppingListItem.ItemId = newItemId;
 
             MockDataProvider.Instance.Items.Add(shoppingListItem);
-
+            log.Debug("Sending new item to all clients...");
             await shoppingItemHub.Clients.All.SendAsync("NewItem", shoppingListItem);
-
+            log.Debug("Sending new item to all clients done!");
             return Ok();
         }
 
@@ -37,11 +41,16 @@ namespace DontForgetTheRamen.Server.Controllers
 
             if(index != -1 )
             {
+                log.Debug($"Modifying item with id {index}...");
                 MockDataProvider.Instance.Items[index] = shoppingListItem;
+                log.Debug("Sending change to all clients...");
                 await shoppingItemHub.Clients.All.SendAsync("UpdatedItem", shoppingListItem);
+                log.Debug("Sending change to all clients done!");
+                log.Debug($"Modifying item with id {index} done!");
                 return Ok();
             } else
             {
+                log.Debug($"Modifying item with id '{shoppingListItem.ItemId}' failed, id not found!");
                 return BadRequest();
             }
 
