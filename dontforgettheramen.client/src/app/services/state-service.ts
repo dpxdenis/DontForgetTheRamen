@@ -79,12 +79,12 @@ export class StateService {
           return currentItem;
         })
       );
-      this.messageService.add({ severity: 'info', summary: 'DontForgetTheRamen', detail: `Shopping item '${item.articleName}' was updated.\n${changes}` });
+      this.messageService.add({ severity: 'info', summary: 'DontForgetTheRamen', detail: `Shopping item '${item.articleName}' was updated.${changes}` });
     })
   }
 
   private getChanges(oldItem: ShoppingListItem, newItem: ShoppingListItem): string {
-    let changes = "Changes:";
+    let changes = "";
     if (oldItem.quantity !== newItem.quantity) {
       changes += `\n- Quantity was updated from ${oldItem.quantity} to ${newItem.quantity}`;
     }
@@ -103,6 +103,10 @@ export class StateService {
 
     if (oldItem.placeToBuy !== newItem.placeToBuy) {
       changes += `\n- Place to buy was updated from '${oldItem.placeToBuy}' to '${newItem.placeToBuy}'`;
+    }
+
+    if (oldItem.checked !== newItem.checked) {
+      changes += `\n- State was updated from '${oldItem.checked ? 'Closed' : 'Open'}' to '${newItem.checked ? 'Closed' : 'Open'}`;
     }
     return changes;
   }
@@ -138,8 +142,8 @@ export class StateService {
     this.messageService.add({ severity: 'success', summary: 'DontForgetTheRamen', detail: `Login successfull! Welcome back, @${this.username}!` });
   }
 
-  sendCheckedState(shoppingListItem: ShoppingListItem) {
+  /*sendCheckedState(shoppingListItem: ShoppingListItem) {
     this.signalRService.sendChangeCheckedState(shoppingListItem, this.username);
-  }
+  }*/
 
 }
